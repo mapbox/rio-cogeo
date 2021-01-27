@@ -1,0 +1,686 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Cloud Optimized GeoTIFF (COG) creation and validation plugin for Rasterio.">
+      
+      
+      
+      
+        <link rel="canonical" href="https://cogeotiff.github.io/rio-cogeo/release-notes/">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.6">
+    
+    
+      
+        <title>Release Notes - rio-cogeo</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../overrides/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#release-notes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://cogeotiff.github.io/rio-cogeo/" title="rio-cogeo" class="md-header-nav__button md-logo" aria-label="rio-cogeo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            rio-cogeo
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Release Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/cogeotiff/rio-cogeo/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cogeotiff/rio-cogeo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://cogeotiff.github.io/rio-cogeo/" title="rio-cogeo" class="md-nav__button md-logo" aria-label="rio-cogeo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    rio-cogeo
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/cogeotiff/rio-cogeo/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cogeotiff/rio-cogeo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/" class="md-nav__link">
+        Command-line interface (CLI)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/" class="md-nav__link">
+        Application programming interface (API)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced/" class="md-nav__link">
+        Advanced Topics
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../profile/" class="md-nav__link">
+        COG Profiles
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Is_it_a_COG/" class="md-nav__link">
+        How To
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Development - Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Release Notes
+      </a>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/cogeotiff/rio-cogeo/blob/master/docs/release-notes.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">&para;</a></h1>
+<h1 id="211-2021-01-27">2.1.1 (2021-01-27)<a class="headerlink" href="#211-2021-01-27" title="Permanent link">&para;</a></h1>
+<ul>
+<li>drop support for Python 3.5 (<a class="magiclink magiclink-github magiclink-issue" href="https://github.com/cogeotiff/rio-cogeo/issues/173" title="GitHub Issue: cogeotiff/rio-cogeo#173">cogeotiff/rio-cogeo#173</a>)</li>
+<li>allow pathlib.PurePath object as input and output (<a class="magiclink magiclink-github magiclink-issue" href="https://github.com/cogeotiff/rio-cogeo/issues/173" title="GitHub Issue: cogeotiff/rio-cogeo#173">cogeotiff/rio-cogeo#173</a>)</li>
+<li>add top-level exports (<a class="magiclink magiclink-github magiclink-issue" href="https://github.com/cogeotiff/rio-cogeo/issues/169" title="GitHub Issue: cogeotiff/rio-cogeo#169">cogeotiff/rio-cogeo#169</a>)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># before</span>
+<span class="kn">from</span> <span class="nn">rio_cogeo.cogeo</span> <span class="kn">import</span> <span class="n">cog_translate</span><span class="p">,</span> <span class="n">cog_validate</span><span class="p">,</span> <span class="n">cog_info</span>
+<span class="kn">from</span> <span class="nn">rio_cogeo.profiles</span> <span class="kn">import</span> <span class="n">cog_profiles</span>
+
+<span class="c1"># now</span>
+<span class="kn">from</span> <span class="nn">rio_cogeo</span> <span class="kn">import</span> <span class="n">cog_translate</span><span class="p">,</span> <span class="n">cog_validate</span><span class="p">,</span> <span class="n">cog_info</span><span class="p">,</span> <span class="n">cog_profiles</span>
+</code></pre></div>
+<h2 id="210-2020-12-18">2.1.0 (2020-12-18)<a class="headerlink" href="#210-2020-12-18" title="Permanent link">&para;</a></h2>
+<ul>
+<li>switch to <code>morecantile</code> and update the web-optimized creation method to better match GDAL 3.2.</li>
+<li>add <code>zoom_level_strategy</code> options to match GDAL 3.2 COG driver.</li>
+<li>add <code>aligned_levels</code> (cli and api) to select the level of overview to align with the TMS grid.</li>
+</ul>
+<p><strong>Breaking Changes:</strong>
+* removed <code>--latitude-adjustment/--global-maxzoom</code> option in the CLI
+* removed <code>latitude_adjustment</code> option in <code>rio_cogeo.cogeo.cog_translate</code>
+* updated <strong>overview blocksize</strong> to match the blocksize of the high resolution data (instead of default to 128)
+* for web-optimized COG, the highest overview level will be aligned with the TMS grid.</p>
+<h2 id="201-2020-10-07">2.0.1 (2020-10-07)<a class="headerlink" href="#201-2020-10-07" title="Permanent link">&para;</a></h2>
+<ul>
+<li>remove <code>pkg_resources</code> (<a class="magiclink magiclink-github magiclink-issue" href="https://github.com/pypa/setuptools/issues/510" title="GitHub Issue: pypa/setuptools#510">pypa/setuptools#510</a>)</li>
+</ul>
+<h2 id="200-2020-10-05">2.0.0 (2020-10-05)<a class="headerlink" href="#200-2020-10-05" title="Permanent link">&para;</a></h2>
+<p>There have been no changes since 2.0a9</p>
+<h2 id="20a9-2020-10-03">2.0a9 (2020-10-03)<a class="headerlink" href="#20a9-2020-10-03" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Update max IFD offset to 300 bytes (<a class="magiclink magiclink-github magiclink-issue" href="https://github.com/cogeotiff/rio-cogeo/issues/158" title="GitHub Issue: cogeotiff/rio-cogeo#158">cogeotiff/rio-cogeo#158</a>)</li>
+</ul>
+<h2 id="20a8-2020-09-28">2.0a8 (2020-09-28)<a class="headerlink" href="#20a8-2020-09-28" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Make sure Alpha band isn't considered as an internal mask by <code>utils.has_mask_band</code> (#156)</li>
+</ul>
+<h2 id="20a7post1-2020-09-23">2.0a7.post1 (2020-09-23)<a class="headerlink" href="#20a7post1-2020-09-23" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Fix wrong min-zoom calculation in <code>rio_cogeo.cogeo.cog_info</code></li>
+</ul>
+<h2 id="20a7-2020-09-23">2.0a7 (2020-09-23)<a class="headerlink" href="#20a7-2020-09-23" title="Permanent link">&para;</a></h2>
+<ul>
+<li>remove duplicate <code>count</code> information in rio_cogeo.cogeo.cog_info output (#150)</li>
+<li>allow COG with IFD offset up to 200 bytes to accomodate with GDAL 3.1 changes (#151)</li>
+<li>fix zoom level calculation in <code>rio_cogeo.cogeo.cog_info</code></li>
+</ul>
+<h2 id="20a6-2020-08-18">2.0a6 (2020-08-18)<a class="headerlink" href="#20a6-2020-08-18" title="Permanent link">&para;</a></h2>
+<ul>
+<li>fix bug in cogeo.info when CRS in not set.</li>
+<li>add minzoom/maxzoom in cogeo.info output.</li>
+</ul>
+<p><strong>Breaking Changes:</strong>
+* rio_cogeo.utils.get_max_zoom renamed rio_cogeo.utils.get_zooms and now return min/max zoom.</p>
+<h2 id="20a5-2020-07-31">2.0a5 (2020-07-31)<a class="headerlink" href="#20a5-2020-07-31" title="Permanent link">&para;</a></h2>
+<ul>
+<li>move most of the cogeo info code in rio_cogeo.cogeo.cog_info api</li>
+<li>add cog_validation info in cogeo info result</li>
+<li>cog_validate returns a tuple (is_valid, errors, warnings) (#142, co-author with @geospatial-jeff)</li>
+<li>add scale, offset, image tags and band color interpretation in cog_info (#145, #146 and #147)</li>
+</ul>
+<h2 id="20a4-2020-06-15">2.0a4 (2020-06-15)<a class="headerlink" href="#20a4-2020-06-15" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Force output width and height (#140)</li>
+</ul>
+<h2 id="20a3-2020-06-15">2.0a3 (2020-06-15)<a class="headerlink" href="#20a3-2020-06-15" title="Permanent link">&para;</a></h2>
+<ul>
+<li>add <code>info</code> CLI (#134)</li>
+<li>use <code>Deflate</code> as default temporary compression (#137)</li>
+</ul>
+<h2 id="20a2-2020-05-20">2.0a2 (2020-05-20)<a class="headerlink" href="#20a2-2020-05-20" title="Permanent link">&para;</a></h2>
+<ul>
+<li>add <code>--config</code> CLI option to pass additional GDAL Configuration options (#135)</li>
+</ul>
+<h2 id="20a1-2020-05-07">2.0a1 (2020-05-07)<a class="headerlink" href="#20a1-2020-05-07" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Dropping python 2</strong> (#128)</li>
+<li>use new mercantile xy_bounds for better web-optimized file (#126)</li>
+<li>Allow temporary file on disk when using MemoryFile output</li>
+<li>add <code>--blocksize</code> option in CLI (#131)</li>
+<li>depreciate <code>rio_cogeo.utils.get_maximum_overview_level</code> and use rasterio.rio.overview.get_maximum_overview_level (#132)</li>
+</ul>
+<h2 id="1110-2020-02-21">1.1.10 (2020-02-21)<a class="headerlink" href="#1110-2020-02-21" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Transfer colormap (#121)</li>
+</ul>
+<h2 id="119-2020-02-06">1.1.9 (2020-02-06)<a class="headerlink" href="#119-2020-02-06" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Transfer scale and offset values to output COG (#118)</li>
+</ul>
+<h2 id="118-2020-01-08">1.1.8 (2020-01-08)<a class="headerlink" href="#118-2020-01-08" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Transfer color interpretation value to output COG (#113) * Thanks @pierotofy</li>
+<li>Cast <code>dataset_mask</code> returned by rasterio to uint8 to overcome a bug in rasterio 1.1.2 (#115)</li>
+</ul>
+<h2 id="117-2019-12-02">1.1.7 (2019-12-02)<a class="headerlink" href="#117-2019-12-02" title="Permanent link">&para;</a></h2>
+<ul>
+<li>add <code>strict</code> option to cog_validate to treat warnings as error (#109) * Thanks @pierotofy</li>
+<li>add documentation examples using MemoryFiles (#108 #107)</li>
+<li>Switch to <code>PHOTOMETRIC=MINISBLACK</code> when PHOTOMETRIC is set to YCBCR for 1 band dataset (#41)</li>
+</ul>
+<h2 id="116-2019-11-13">1.1.6 (2019-11-13)<a class="headerlink" href="#116-2019-11-13" title="Permanent link">&para;</a></h2>
+<ul>
+<li>add <code>-forward-band-tags</code> options (#115)</li>
+</ul>
+<h2 id="115-2019-10-04">1.1.5 (2019-10-04)<a class="headerlink" href="#115-2019-10-04" title="Permanent link">&para;</a></h2>
+<ul>
+<li>add <code>--allow-intermediate-compression</code> option to reduce the memory/disk footprint (#103)</li>
+</ul>
+<h2 id="114-2019-10-03">1.1.4 (2019-10-03)<a class="headerlink" href="#114-2019-10-03" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Fix support for optimizing open datasets, memfiles, and VRTs (#100 from j08lue)</li>
+</ul>
+<h2 id="113-2019-09-16">1.1.3 (2019-09-16)<a class="headerlink" href="#113-2019-09-16" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Add lzma/lerc/lerc_deflate/lerc_zstd profiles (#97)</li>
+<li>Add warnings and notes for <code>non-standard</code> compression (#97)</li>
+<li>fix THREADS definition for GDAL config</li>
+</ul>
+<h2 id="112-2019-09-12">1.1.2 (2019-09-12)<a class="headerlink" href="#112-2019-09-12" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Fix incorrect context behavior closing input Dataset (#94)</li>
+</ul>
+<h2 id="111-2019-09-10">1.1.1 (2019-09-10)<a class="headerlink" href="#111-2019-09-10" title="Permanent link">&para;</a></h2>
+<ul>
+<li>add safeguard to keep datatype from input to output files (#85)</li>
+</ul>
+<p><strong>CLI Changes:</strong>
+* add <code>-t, --dtype</code> datatype option.</p>
+<p><strong>API Changes:</strong>
+* add datatype option
+* update for rasterio&gt;=1.0.28
+* allow rasterio.io.DatasetReader input (#89)</p>
+<p>Note: This release was deleted in PyPi.</p>
+<h2 id="110-2019-07-16">1.1.0 (2019-07-16)<a class="headerlink" href="#110-2019-07-16" title="Permanent link">&para;</a></h2>
+<ul>
+<li>check internal blocksize and adapt if raster is too small (#80)</li>
+</ul>
+<h2 id="100-2019-04-19">1.0.0 (2019-04-19)<a class="headerlink" href="#100-2019-04-19" title="Permanent link">&para;</a></h2>
+<ul>
+<li>add <code>--web-optimized</code> option to create a web optimized COG (#10)</li>
+<li>add <code>--latitude-adjustment/--global-maxzoom</code> option to adjust MAX_ZOOM for global datasets</li>
+<li>Web-optimized tests needs python3.6 (cogdumper)</li>
+<li>add <code>--resampling</code> option to select the resampling algorithm when using <code>--web-optimized</code></li>
+<li>add <code>--in-memory/--no-in-memory</code> options to use temporyNamedd file instead of in-memory temp file.</li>
+</ul>
+<h2 id="10b3-2019-03-30">1.0b3 (2019-03-30)<a class="headerlink" href="#10b3-2019-03-30" title="Permanent link">&para;</a></h2>
+<p><strong>Breaking Changes:</strong></p>
+<ul>
+<li>remove deprecated YCBCR profile</li>
+<li>512x512 dataset without internal tiling are valid</li>
+</ul>
+<h2 id="10b2-2019-03-27">1.0b2 (2019-03-27)<a class="headerlink" href="#10b2-2019-03-27" title="Permanent link">&para;</a></h2>
+<p><strong>Breaking Changes:</strong></p>
+<ul>
+<li>Switch from JPEG to DEFLATE as default profile in CLI (#66)</li>
+</ul>
+<h2 id="10b1-2019-03-25">1.0b1 (2019-03-25)<a class="headerlink" href="#10b1-2019-03-25" title="Permanent link">&para;</a></h2>
+<p><strong>Breaking Changes:</strong></p>
+<ul>
+<li>refactor utils.get_maximum_overview_level to get rasterio dataset
+as input and reduce the number of dataset opennings (#61)</li>
+</ul>
+<h2 id="10b0-2019-03-15">1.0b0 (2019-03-15)<a class="headerlink" href="#10b0-2019-03-15" title="Permanent link">&para;</a></h2>
+<ul>
+<li>add more logging and <code>--quiet</code> option (#46)</li>
+<li>add <code>--overview-blocksize</code> to set overview's internal tile size (#60)</li>
+</ul>
+<p><strong>Bug fixes:</strong></p>
+<ul>
+<li>copy tags and description from input to output (#19)</li>
+<li>copy input mask band to output mask</li>
+</ul>
+<p><strong>Breaking Changes:</strong></p>
+<ul>
+<li>rio cogeo now has subcommands: 'create' and 'validate' (#6).</li>
+<li>internal mask creation is now optional (--add-mask).</li>
+<li>internal nodata or alpha channel can be forwarded to the output dataset.</li>
+<li>removed default overview blocksize to be equal to the raw data blocksize (#60)</li>
+</ul>
+<h2 id="10dev10-2019-02-12">1.0dev10 (2019-02-12)<a class="headerlink" href="#10dev10-2019-02-12" title="Permanent link">&para;</a></h2>
+<ul>
+<li>allow non integer nodata value (#51)</li>
+<li>fix GDAL blocksize options casting for overview calculation (#50)</li>
+</ul>
+<h2 id="10dev9-2019-02-11">1.0dev9 (2019-02-11)<a class="headerlink" href="#10dev9-2019-02-11" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Renamed "ycbcr" profile's name to "jpeg" to reflect the compression name.
+  "ycbcr" profile will raise a "DeprecationWarning" (#44)</li>
+<li>"webp" profile has been added to COG profiles. Exploitation of this new
+  compression mode will require GDAL 2.4 (#27)</li>
+<li>Rio-cogeo can calculate the overview level based on the internal tile size
+  and the dataset width/height (#37)</li>
+</ul>
+<h2 id="10dev8-2018-10-02">1.0dev8 (2018-10-02)<a class="headerlink" href="#10dev8-2018-10-02" title="Permanent link">&para;</a></h2>
+<ul>
+<li>write tags in output file (#31)</li>
+<li>add bilinear, cubic spline, lanczos resampling modes for overviews</li>
+</ul>
+<h2 id="10dev7-2018-09-12">1.0dev7 (2018-09-12)<a class="headerlink" href="#10dev7-2018-09-12" title="Permanent link">&para;</a></h2>
+<ul>
+<li>add resampling option for overviews (#28)</li>
+</ul>
+<h2 id="10dev6-2018-08-23">1.0dev6 (2018-08-23)<a class="headerlink" href="#10dev6-2018-08-23" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Remove unnecessary compression for in-memory step (reduce runtime and memory usage) (#25)</li>
+</ul>
+<h2 id="10dev4-2018-07-16">1.0dev4 (2018-07-16)<a class="headerlink" href="#10dev4-2018-07-16" title="Permanent link">&para;</a></h2>
+<ul>
+<li>rasterio 1.0</li>
+</ul>
+<h2 id="10dev3-2018-07-05">1.0dev3 (2018-07-05)<a class="headerlink" href="#10dev3-2018-07-05" title="Permanent link">&para;</a></h2>
+<ul>
+<li>remove default bidx in cli (#17)</li>
+</ul>
+<h2 id="10dev2-2018-06-28">1.0dev2 (2018-06-28)<a class="headerlink" href="#10dev2-2018-06-28" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Add ZSTD compressed COG profile (#14)</li>
+<li>Fix warnings for useless boundless=True option (#13)</li>
+<li>add BIGTIFF=IF_SAFER to COG profile (if BIGTIFF not set otherwise in the env)</li>
+</ul>
+<p><strong>Breaking Changes:</strong>
+* replace "BAND" by "PIXEL" interleave in PACKBITS profile (#16)</p>
+<h2 id="10dev12018-16-13">1.0dev1(2018-16-13)<a class="headerlink" href="#10dev12018-16-13" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Initial release. Requires Rasterio &gt;= 1.0b1.</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../contributing/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Development - Contributing
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/cogeotiff" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/cogeotiff" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://www.cogeo.org/" target="_blank" rel="noopener" title="www.cogeo.org" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.53cc9318.min.js"></script>
+      <script src="../assets/javascripts/bundle.e9c9f54f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
